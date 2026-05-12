@@ -81,7 +81,7 @@ function Dashboard() {
 			<main className="content">
 				<div className="topbar">
 					<h2>
-						Gestión de Pedidos
+						Bienvenido
 					</h2>
 					<img className="top-logo" src={logo} alt="Logo" />
 
