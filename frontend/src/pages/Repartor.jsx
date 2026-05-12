@@ -4,7 +4,7 @@ import { OrderContext } from "../context/OrderContext";
 import logo from '../assets/logo.png';
 import truckLogo from '../assets/truck.png';
 
-function Tracking() {
+function Repartor() {
 
     const { orders } = useContext(OrderContext);
     const [filter, setFilter] = useState("Todos");
@@ -50,7 +50,7 @@ function Tracking() {
 								<span>Dashboard</span>
 							</Link>
 						</li>
-						<li className="active">
+						<li>
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-package" aria-hidden="true">
 								<path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path>
 								<path d="M12 22V12"></path><polyline points="3.29 7 12 12 20.71 7"></polyline>
@@ -60,7 +60,7 @@ function Tracking() {
 								<span>Pedidos</span>
 							</Link>
 						</li>
-						<li>
+						<li className="active">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-users" aria-hidden="true">
 								<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
 								<path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -111,88 +111,120 @@ function Tracking() {
 					<h2>
 						Gestión de Repartidores
 					</h2>
-					<img className="top-logo" src={logo} alt="Logo" />
-
+					{/*<button className="add-btn">
+						<i className="bi bi-pencil-square"></i>
+						<Link to="/create-order">
+							Registrar un nuevo repartidor
+						</Link>
+					</button>*/}
 				</div>
 				
-				<div className="actions">
-					{/*<div className="search-box">
-						<i className="bi bi-search"></i>
-						<input type="text" placeholder="ID, Repartidor, Destino..." />
-					</div>*/}
-
-					<div className="actions-right">
-
-						{/*<button className="notification-btn">
-							<i className="bi bi-bell"></i>
-							<span>Notificaciones</span>
-						</button>*/}
-
-						<button className="add-btn">
-							<Link to="/create-order">
-								+ Agregar un nuevo pedido
-							</Link>
-						</button>
-
+				<div className="stats">
+					<div className="stat-card gray">
+						<h6>Total Repartidores</h6>
+						<h2>3</h2>
 					</div>
-					
-					<div className="d-flex gap-2 mb-4">
-						<button className="btn btn-outline-dark" onClick={() => setFilter("Todos")}>
-							Todos
-						</button>
-						
-						<button className="btn btn-outline-warning" onClick={() => setFilter("Pendiente")}>
-							Pendientes
-						</button>
-
-						<button className="btn btn-outline-primary" onClick={() => setFilter("En tránsito")}>
-							En tránsito
-						</button>
-
-						<button className="btn btn-outline-success" onClick={() => setFilter("Entregado")}>
-							Entregados
-						</button>
-
+					<div className="stat-card blue">
+						<h6>En ruta</h6>
+						<h2>1</h2>
 					</div>
-
+					<div className="stat-card green">
+						<h6>Disponibles</h6>
+						<h2>2</h2>
+					</div>
 				</div>
 				
 				<div className="table-container table-responsive custom-table row">
 					<table className="table align-middle">
 						<thead>
 							<tr>
-								<th>ID PEDIDO</th>
-								<th>ORIGEN</th>
-								<th>DESTINO</th>
+								<th>FOTO / NOMBRE</th>
+								<th>VEHÍCULO</th>
+								<th>CAPACIDAD MÁXIMA</th>
 								<th>ESTADO</th>
-								<th>CLIENTE</th>
-								<th>ÚLTIMA ACTUALIZACIÓN</th>
 								<th>ACCIONES</th>
 							</tr>
 						</thead>
 						
 						<tbody>
-							{filteredOrders.map((order) => (
-								<tr key={order.id}>
-									<td>#{order.id}</td>
-									<td>{order.origin}</td>
-									<td>{order.destination}</td>
-									<td>
-										<span className={`badge-status ${getBadgeClass(order.status)}`}>
-											{order.status}
-										</span>
-									</td>
-									<td>{order.client}</td>
-									<td>26/04/2026 09:00</td>
-									<td>
-										<div className="actions-icons">
-											<i className="bi bi-eye"></i>
-											<i className="bi bi-pencil"></i>
-										</div>
-									</td>
-
-								</tr>
-							))}
+							<tr>
+								<td>
+									<div className="driver">
+										<i className="bi bi-person-circle"></i>
+										Juan Pérez
+									</div>
+								</td>
+								<td>
+									<div className="vehicle">
+										<i className="bi bi-truck"></i>
+										Van ABC-123
+									</div>
+								</td>
+								<td>400 Kg</td>
+								<td>
+									<span className="status available">
+										DISPONIBLE
+									</span>
+								</td>
+								<td>
+									<div className="actions-icons">
+										<i className="bi bi-eye"></i>
+										<i className="bi bi-pencil"></i>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div className="driver">
+										<i className="bi bi-person-circle"></i>
+										Karen Roa
+									</div>
+								</td>
+								<td>
+									<div className="vehicle">
+										<i className="bi bi-bicycle"></i>
+										Moto ABC-123
+									</div>
+								</td>
+								<td>150 Kg</td>
+								<td>
+									<span className="status available">
+										DISPONIBLE
+									</span>
+								</td>
+								<td>
+									<div className="actions-icons">
+										<i className="bi bi-eye"></i>
+										<i className="bi bi-pencil"></i>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div className="driver">
+										<i className="bi bi-person-circle"></i>
+										Steven Enciso
+									</div>
+								</td>
+								<td>
+									<div className="vehicle">
+										<i className="bi bi-truck"></i>
+										Camión ABC-456
+									</div>
+								</td>
+								<td>500 Kg</td>
+								<td>
+									<span className="status route">
+										EN RUTA
+									</span>
+								</td>
+								<td>
+									<div className="actions-icons">
+										<i className="bi bi-eye"></i>
+										<i className="bi bi-pencil"></i>
+									</div>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -207,4 +239,4 @@ function Tracking() {
 	);
 }
 
-export default Tracking;
+export default Repartor;

@@ -2,105 +2,104 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
+import logo from '../assets/logo.png'
+import truckLogo from '../assets/truck.png'
+
 function Login() {
 
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm();
+	const [loading, setLoading] = useState(false);
+	const {
+		register,
+		handleSubmit,
+		formState: { errors }
+	} = useForm();
 
-  const onSubmit = (data) => {
+	 
+	const onSubmit = (data) => {
 
-  setLoading(true);
+	  setLoading(true);
 
-  setTimeout(() => {
+	  setTimeout(() => {
 
-    console.log(data);
+		console.log(data);
 
-    setLoading(false);
+		setLoading(false);
 
-    navigate("/dashboard");
+		navigate("/dashboard");
 
-  }, 1500);
-};
+	  }, 1500);
+	};
 
-  return (
-    <div className="container mt-5">
+	return (
+		<div className="login-wrapper">
+			
+			<div className="login-card">
 
-      <div className="card p-4 shadow">
+				<div className="login-logo">
+					<img src={logo} alt="Logo SSPR" className="logo" />
+				</div>
+			
+				<div className="card">
+					<h1 className="title">
+						SSPR <br />
+						Sistema de seguimiento de Pedidos y Rutas
+					</h1>
 
-        <h2 className="mb-4 text-center">
-          Iniciar Sesión
-        </h2>
+					<div className="subtitle">
+						Inicio de Sesión
+					</div>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
+					<form onSubmit={handleSubmit(onSubmit)}>
+						<div className="mb-3">
+							<input type="email" className="form-control" {...register("email", {required: "El email es obligatorio" })} placeholder="Correo" />
+						</div>
+						
+						{errors.password && (
+						  <p classNameName="text-danger">
+							{errors.email.message}
+						  </p>
+						)}
+						
+						<div className="mb-3">
+							<input type="password" className="form-control" {...register("password", {required: "La contraseña es obligatoria", minLength: { value: 6, message: "Mínimo 6 caracteres"} })} placeholder="Contraseña" />
+						</div>
+						
+						{errors.password && (
+						  <p classNameName="text-danger">
+							{errors.password.message}
+						  </p>
+						)}
 
-          <div className="mb-3">
-            <label>Email</label>
+						<div className="mb-3">
+							<select className="form-select">
+								<option selected disabled>
+									Seleccionar Rol...
+								</option>
 
-            <input
-              type="email"
-              className="form-control"
-              {...register("email", {
-                required: "El email es obligatorio",
+								<option>Administrador</option>
+								<option>Supervisor</option>
+								<option>Conductor</option>
+							</select>
+						</div>
 
-                pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "Ingrese un email válido"
-                }
+						<div className="truck-area">
+							<img src={truckLogo} alt="Camión" />
+						</div>
 
+						<button type="submit" className="btn btn-login" disabled={loading}>
+							{loading ? "Ingresando..." : "Ingresar"}
+						</button>
 
-              })}
-            />
+					</form>
 
-            {errors.email && (
-              <p className="text-danger">
-                {errors.email.message}
-              </p>
-            )}
-          </div>
+				</div>
+				
+			</div>
 
-          <div className="mb-3">
-            <label>Contraseña</label>
+		</div>
 
-            <input
-              type="password"
-              className="form-control"
-              {...register("password", {
-                required: "La contraseña es obligatoria",
-                minLength: {
-                  value: 6,
-                  message: "Mínimo 6 caracteres"
-                }
-              })}
-            />
-
-            {errors.password && (
-              <p className="text-danger">
-                {errors.password.message}
-              </p>
-            )}
-          </div>
-
-            <button
-            type="submit"
-            className="btn btn-primary w-100"
-            disabled={loading}
-            >
-
-            {loading ? "Ingresando..." : "Ingresar"}
-
-            </button>
-
-        </form>
-
-      </div>
-
-    </div>
-  );
+	);
 }
 
 export default Login;

@@ -4,7 +4,7 @@ import { OrderContext } from "../context/OrderContext";
 import logo from '../assets/logo.png';
 import truckLogo from '../assets/truck.png';
 
-function Tracking() {
+function Rute() {
 
     const { orders } = useContext(OrderContext);
     const [filter, setFilter] = useState("Todos");
@@ -50,7 +50,7 @@ function Tracking() {
 								<span>Dashboard</span>
 							</Link>
 						</li>
-						<li className="active">
+						<li>
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-package" aria-hidden="true">
 								<path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path>
 								<path d="M12 22V12"></path><polyline points="3.29 7 12 12 20.71 7"></polyline>
@@ -70,7 +70,7 @@ function Tracking() {
 								<span>Repartidores</span>
 							</Link>
 						</li>
-						<li>
+						<li className="active">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-route" aria-hidden="true">
 								<circle cx="6" cy="19" r="3"></circle>
 								<path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"></path>
@@ -107,11 +107,20 @@ function Tracking() {
 			</aside>
 
 			<main className="content">
-				<div className="topbar">
+				<div className="detail-topbar">
+
 					<h2>
-						Gestión de Repartidores
+						Detalle del Pedido #A1203
 					</h2>
-					<img className="top-logo" src={logo} alt="Logo" />
+
+					<button className="back-btn">
+
+						<i className="bi bi-arrow-left"></i>
+						<Link to="/tracking">
+							<span>Volver al listado</span>
+						</Link>
+
+					</button>
 
 				</div>
 				
@@ -126,75 +135,110 @@ function Tracking() {
 						{/*<button className="notification-btn">
 							<i className="bi bi-bell"></i>
 							<span>Notificaciones</span>
-						</button>*/}
+						</button>
 
 						<button className="add-btn">
 							<Link to="/create-order">
 								+ Agregar un nuevo pedido
 							</Link>
-						</button>
-
-					</div>
-					
-					<div className="d-flex gap-2 mb-4">
-						<button className="btn btn-outline-dark" onClick={() => setFilter("Todos")}>
-							Todos
-						</button>
-						
-						<button className="btn btn-outline-warning" onClick={() => setFilter("Pendiente")}>
-							Pendientes
-						</button>
-
-						<button className="btn btn-outline-primary" onClick={() => setFilter("En tránsito")}>
-							En tránsito
-						</button>
-
-						<button className="btn btn-outline-success" onClick={() => setFilter("Entregado")}>
-							Entregados
-						</button>
+						</button>*/}
 
 					</div>
 
 				</div>
 				
-				<div className="table-container table-responsive custom-table row">
-					<table className="table align-middle">
-						<thead>
-							<tr>
-								<th>ID PEDIDO</th>
-								<th>ORIGEN</th>
-								<th>DESTINO</th>
-								<th>ESTADO</th>
-								<th>CLIENTE</th>
-								<th>ÚLTIMA ACTUALIZACIÓN</th>
-								<th>ACCIONES</th>
-							</tr>
-						</thead>
-						
-						<tbody>
-							{filteredOrders.map((order) => (
-								<tr key={order.id}>
-									<td>#{order.id}</td>
-									<td>{order.origin}</td>
-									<td>{order.destination}</td>
-									<td>
-										<span className={`badge-status ${getBadgeClass(order.status)}`}>
-											{order.status}
-										</span>
-									</td>
-									<td>{order.client}</td>
-									<td>26/04/2026 09:00</td>
-									<td>
-										<div className="actions-icons">
-											<i className="bi bi-eye"></i>
-											<i className="bi bi-pencil"></i>
-										</div>
-									</td>
+				<div className="detail-card">
 
-								</tr>
-							))}
-						</tbody>
-					</table>
+					<div className="detail-grid">
+						<div>
+							<strong>Cliente:</strong> Gisela R
+						</div>
+						<div>
+							<strong>Estado:</strong> Entregado
+						</div>
+						<div>
+							<strong>Repartidor:</strong> Norbert L.
+						</div>
+						<div>
+							<strong>Origen:</strong> San Cristóbal
+						</div>
+						<div>
+							<strong>Destino:</strong> Engativá
+						</div>
+						<div>
+							<strong>Vehículo:</strong> Camión (ID: ABC-123)
+						</div>
+					</div>
+				</div>
+				
+				<div className="detail-body">
+					
+					<div className="timeline">
+						
+						<div className="timeline-item active">
+							<div className="timeline-date">
+								26/04/2026 - 17:00
+							</div>
+							<div className="timeline-icon">
+								<i className="bi bi-hand-index-thumb"></i>
+							</div>
+							<div className="timeline-content">
+								<h6>Pedido Entregado</h6>
+								<p>
+									Descripción: Entregado en Portería
+								</p>
+							</div>
+						</div>
+						
+						<div className="timeline-item">
+							<div className="timeline-date">
+								26/04/2026 - 09:00
+							</div>
+							<div className="timeline-icon">
+								<i className="bi bi-truck"></i>
+							</div>
+							<div className="timeline-content">
+								<h6>En Ruta</h6>
+								<p>
+									Descripción: Cerca a portal 80
+								</p>
+							</div>
+						</div>
+						
+						<div className="timeline-item">
+							<div className="timeline-date">
+								24/04/2026 - 10:00
+							</div>
+							<div className="timeline-icon">
+								<i className="bi bi-box-seam"></i>
+							</div>
+							<div className="timeline-content">
+								<h6>Asignado</h6>
+								<p>
+									Descripción: Norbert L. aceptó el pedido
+								</p>
+							</div>
+						</div>
+						
+						<div className="timeline-item">
+							<div className="timeline-date">
+								24/04/2026 - 09:00
+							</div>
+							<div className="timeline-icon">
+								<i className="bi bi-file-earmark-text"></i>
+							</div>
+							<div className="timeline-content">
+								<h6>Creado</h6>
+								<p>
+									Descripción: Pedido registrado por el sistema.
+								</p>
+							</div>
+						</div>
+					</div>
+					
+					<div className="map-card">
+						<img src="img/mapa.png" alt="Mapa" />
+					</div>
 				</div>
 				
 				<div className="truck-footer">
@@ -207,4 +251,4 @@ function Tracking() {
 	);
 }
 
-export default Tracking;
+export default Rute;
