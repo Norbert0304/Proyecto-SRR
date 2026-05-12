@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 function Login() {
 
+    const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -9,7 +11,7 @@ function Login() {
   } = useForm();
 
   const onSubmit = (data) => {
-    alert("Login correcto");
+    navigate("/dashboard");
     console.log(data);
   };
 
