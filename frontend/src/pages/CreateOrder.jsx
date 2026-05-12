@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { OrderContext } from "../context/OrderContext";
 import { useNavigate } from "react-router-dom";
 
@@ -7,6 +7,7 @@ function CreateOrder() {
 
     const { addOrder } = useContext(OrderContext);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -16,11 +17,26 @@ function CreateOrder() {
 
   const onSubmit = (data) => {
 
-  addOrder(data);
+  setLoading(true);
 
-  alert("Pedido creado correctamente");
+  const cleanData = {
+    origin: data.origin.trim(),
+    destination: data.destination.trim(),
+    client: data.client.trim(),
+    description: data.description.trim()
+  };
 
-  navigate("/tracking");
+  setTimeout(() => {
+
+    addOrder(cleanData);
+
+    setLoading(false);
+
+    alert("Pedido creado correctamente");
+
+    navigate("/tracking");
+
+  }, 1500);
 };
 
   return (
@@ -42,7 +58,11 @@ function CreateOrder() {
               type="text"
               className="form-control"
               {...register("origin", {
-                required: "El origen es obligatorio"
+                required: "El origen es obligatorio",
+                minLength: {
+                value: 3,
+                message: "Mínimo 3 caracteres"
+                }
               })}
             />
 
@@ -62,7 +82,12 @@ function CreateOrder() {
               type="text"
               className="form-control"
               {...register("destination", {
-                required: "El destino es obligatorio"
+                required: "El destino es obligatorio",
+                minLength: {
+                value: 3,
+                message: "Mínimo 3 caracteres"
+                }
+
               })}
             />
 
@@ -82,7 +107,12 @@ function CreateOrder() {
               type="text"
               className="form-control"
               {...register("client", {
-                required: "El cliente es obligatorio"
+                required: "El cliente es obligatorio",
+                minLength: {
+                value: 3,
+                message: "Mínimo 3 caracteres"
+                }
+
               })}
             />
 
@@ -121,9 +151,12 @@ function CreateOrder() {
           <button
             type="submit"
             className="btn btn-success w-100"
-          >
-            Crear Pedido
-          </button>
+            disabled={loading}
+            >
+
+            {loading ? "Creando pedido..." : "Crear Pedido"}
+
+            </button>
 
         </form>
 
