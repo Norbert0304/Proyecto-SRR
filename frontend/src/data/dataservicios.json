@@ -1,0 +1,5 @@
+[
+  { "id": 1, "nombre": "Reserva Vuelo Nacional", "precio": 150000, "disponible": true },
+  { "id": 2, "nombre": "Reserva Vuelo Internacional", "precio": 850000, "disponible": true },
+  { "id": 3, "nombre": "Seguro de Viaje", "precio": 45000, "disponible": true }
+]
