@@ -1,9 +1,35 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { OrderContext } from "../context/OrderContext";
 
 function Tracking() {
 
     const { orders } = useContext(OrderContext);
+    const [filter, setFilter] = useState("Todos");
+
+    const filteredOrders =
+  filter === "Todos"
+    ? orders
+    : orders.filter(
+        (order) => order.status === filter
+      );
+
+      const getBadgeClass = (status) => {
+
+  switch (status) {
+
+    case "Pendiente":
+      return "bg-warning text-dark";
+
+    case "En tránsito":
+      return "bg-primary";
+
+    case "Entregado":
+      return "bg-success";
+
+    default:
+      return "bg-secondary";
+  }
+};
   return (
     <div className="container mt-5">
 
@@ -11,9 +37,41 @@ function Tracking() {
         Tracking de Pedidos
       </h1>
 
+      <div className="d-flex gap-2 mb-4">
+
+    <button
+        className="btn btn-outline-dark"
+        onClick={() => setFilter("Todos")}
+    >
+        Todos
+    </button>
+
+    <button
+        className="btn btn-outline-warning"
+        onClick={() => setFilter("Pendiente")}
+    >
+        Pendientes
+    </button>
+
+    <button
+        className="btn btn-outline-primary"
+        onClick={() => setFilter("En tránsito")}
+    >
+        En tránsito
+    </button>
+
+    <button
+        className="btn btn-outline-success"
+        onClick={() => setFilter("Entregado")}
+    >
+        Entregados
+    </button>
+
+    </div>
+
       <div className="row">
 
-        {orders.map((order) => (
+        {filteredOrders.map((order) => (
 
           <div
             key={order.id}
@@ -43,8 +101,15 @@ function Tracking() {
               </p>
 
               <p>
-                <strong>Estado:</strong> {order.status}
-              </p>
+                <strong>Estado:</strong>
+
+                <span
+                    className={`badge ms-2 ${getBadgeClass(order.status)}`}
+                >
+                    {order.status}
+                </span>
+
+             </p>
 
             </div>
 
