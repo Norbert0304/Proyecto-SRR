@@ -1,28 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import CreateOrder from "./pages/CreateOrder";
-import Tracking from "./pages/Tracking";
+import Layout from "./layout/Layout";
+// ... tus otros imports
 
 function App() {
   return (
     <BrowserRouter>
-
-      <Routes>
-
-        <Route path="/" element={<Login />} />
-
-        <Route path="/dashboard" element={<Dashboard />} />
-
-        <Route path="/create-order" element={<CreateOrder />} />
-
-        <Route path="/tracking" element={<Tracking />} />
-
-      </Routes>
-
+      <Layout> {/* <--- Esto envuelve TODO y pone la Navbar/Sidebar fija */}
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/create-order" element={<CreateOrder />} />
+          <Route path="/tracking" element={<Tracking />} />
+          {/* Si quieres que el Login no tenga Navbar, muévelo fuera del Layout */}
+        </Routes>
+      </Layout>
     </BrowserRouter>
   );
 }
-
-export default App;
