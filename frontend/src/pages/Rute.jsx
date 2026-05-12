@@ -151,19 +151,19 @@ function Rute() {
 
 					<div className="detail-grid">
 						<div>
-							<strong>Cliente:</strong> Gisela R
+							<strong>Cliente:</strong> Ana Torres
 						</div>
 						<div>
-							<strong>Estado:</strong> Entregado
+							<strong>Estado:</strong> En tránsito
 						</div>
 						<div>
-							<strong>Repartidor:</strong> Norbert L.
+							<strong>Repartidor:</strong> Steven Enciso
 						</div>
 						<div>
-							<strong>Origen:</strong> San Cristóbal
+							<strong>Origen:</strong> Cali
 						</div>
 						<div>
-							<strong>Destino:</strong> Engativá
+							<strong>Destino:</strong> Barranquilla
 						</div>
 						<div>
 							<strong>Vehículo:</strong> Camión (ID: ABC-123)
@@ -175,9 +175,9 @@ function Rute() {
 					
 					<div className="timeline">
 						
-						<div className="timeline-item active">
+						<div className="timeline-item">
 							<div className="timeline-date">
-								26/04/2026 - 17:00
+								Null
 							</div>
 							<div className="timeline-icon">
 								<i className="bi bi-hand-index-thumb"></i>
@@ -185,12 +185,12 @@ function Rute() {
 							<div className="timeline-content">
 								<h6>Pedido Entregado</h6>
 								<p>
-									Descripción: Entregado en Portería
+									Descripción: Null
 								</p>
 							</div>
 						</div>
 						
-						<div className="timeline-item">
+						<div className="timeline-item active">
 							<div className="timeline-date">
 								26/04/2026 - 09:00
 							</div>
@@ -207,7 +207,7 @@ function Rute() {
 						
 						<div className="timeline-item">
 							<div className="timeline-date">
-								24/04/2026 - 10:00
+								24/04/2026 - 08:00
 							</div>
 							<div className="timeline-icon">
 								<i className="bi bi-box-seam"></i>
@@ -222,7 +222,7 @@ function Rute() {
 						
 						<div className="timeline-item">
 							<div className="timeline-date">
-								24/04/2026 - 09:00
+								24/04/2026 - 07:00
 							</div>
 							<div className="timeline-icon">
 								<i className="bi bi-file-earmark-text"></i>

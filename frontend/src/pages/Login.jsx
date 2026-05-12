@@ -71,7 +71,7 @@ function Login() {
 						  </p>
 						)}
 
-						<div className="mb-3">
+						{/*<div className="mb-3">
 							<select className="form-select">
 								<option selected disabled>
 									Seleccionar Rol...
@@ -81,7 +81,7 @@ function Login() {
 								<option>Supervisor</option>
 								<option>Conductor</option>
 							</select>
-						</div>
+						</div>*/}
 
 						<div className="truck-area">
 							<img src={truckLogo} alt="Camión" />
