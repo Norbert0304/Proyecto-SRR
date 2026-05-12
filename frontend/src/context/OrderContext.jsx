@@ -29,7 +29,9 @@ function OrderProvider({ children }) {
     const order = {
       id: orders.length + 1,
       ...newOrder,
-      status: "Pendiente"
+      status: ["Pendiente", "En tránsito", "Entregado"][
+        Math.floor(Math.random() * 3)
+        ]
     };
 
     setOrders([...orders, order]);
