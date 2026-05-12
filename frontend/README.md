@@ -1,16 +1,29 @@
-# React + Vite
+# ✈️ Proyecto SRR - Fase 2: Implementación Front-end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositorio contiene el desarrollo de la interfaz de usuario para el sistema de reservas **SRR**, cumpliendo con los requisitos de la Fase 2 de Ingeniería Web.
 
-Currently, two official plugins are available:
+## 👥 Equipo de Trabajo
+* **Norbert Valdiviezo**: [Nombre] - Arquitectura y Navegación
+* **Johan**: [Nombre] - Diseño UI y Responsividad
+* **Juan Pablo**: [Nombre] - Lógica de Formularios y Validaciones
+* **Karen Gisela Jimenez Ros**: Integración de Datos y DevOps (Despliegue)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Tecnologías y Herramientas
+* **React + Vite**: Framework para la construcción de la SPA.
+* **Bootstrap**: Framework de CSS para asegurar el diseño responsivo.
+* **JSON (Mock Data)**: Simulación de servicios para interacción dinámica.
+* **Vercel**: Plataforma utilizada para el despliegue y acceso remoto.
 
-## React Compiler
+## 📂 Organización del Proyecto
+La estructura se ha organizado para facilitar la escalabilidad:
+* `/src/data`: Contiene los archivos JSON de simulación de datos.
+* `/src/pages`: Vistas principales de la aplicación.
+* `/src/components`: Componentes reutilizables (Navbar, Footer, Formularios).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Instrucciones para Ejecución Local
+1. Clonar el repositorio.
+2. Instalar dependencias: `npm install`.
+3. Ejecutar en modo desarrollo: `npm run dev`.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🌐 Enlace de Acceso Remoto
+[AQUÍ PEGAS EL LINK QUE TE DE VERCEL]
