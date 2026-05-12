@@ -1,6 +1,12 @@
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { OrderContext } from "../context/OrderContext";
+import { useNavigate } from "react-router-dom";
 
 function CreateOrder() {
+
+    const { addOrder } = useContext(OrderContext);
+    const navigate = useNavigate();
 
   const {
     register,
@@ -9,10 +15,13 @@ function CreateOrder() {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
 
-    alert("Pedido creado correctamente");
-  };
+  addOrder(data);
+
+  alert("Pedido creado correctamente");
+
+  navigate("/tracking");
+};
 
   return (
     <div className="container mt-5">

@@ -1,7 +1,9 @@
-import orders from "../data/orders";
+import { useContext } from "react";
+import { OrderContext } from "../context/OrderContext";
 
 function Tracking() {
 
+    const { orders } = useContext(OrderContext);
   return (
     <div className="container mt-5">
 
