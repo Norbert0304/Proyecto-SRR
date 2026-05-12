@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { OrderContext } from "../context/OrderContext";
 import logo from '../assets/logo.png';
 import truckLogo from '../assets/truck.png';
+import mapsImg from '../assets/maps.png';
 
 function Rute() {
 
@@ -237,7 +238,7 @@ function Rute() {
 					</div>
 					
 					<div className="map-card">
-						<img src="img/mapa.png" alt="Mapa" />
+						<img src={mapsImg} alt="Mapa" />
 					</div>
 				</div>
 				
